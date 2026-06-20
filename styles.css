@@ -270,6 +270,13 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px; color: var(--mid-gray); margin-left: 6px;
   font-weight: 400;
 }
+.coaches-names a {
+  text-decoration: none; color: inherit;
+  transition: color 0.2s;
+  border-bottom: 1px solid transparent;
+}
+.coaches-names a:hover { border-bottom-color: var(--tobacco-light); }
+.coaches-names a:hover span { color: var(--tobacco-light); }
 
 /* ===== CARDS ===== */
 .cards {
