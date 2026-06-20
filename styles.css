@@ -337,22 +337,78 @@ a { color: inherit; text-decoration: none; }
 }
 .deliverable p { font-size: 14px; color: var(--light-gray); line-height: 1.6; }
 
+/* ===== INSIDE A SESSION ===== */
+.section-intro {
+  font-family: var(--font-accent); font-size: 17px;
+  color: var(--warm-gray); line-height: 1.7;
+  max-width: 680px; margin-bottom: 40px;
+}
+
+.session-tabs {
+  display: flex; gap: 8px; margin-bottom: 40px;
+  border-bottom: 2px solid var(--light-gray);
+  padding-bottom: 0;
+}
+.session-tab {
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 12px 24px; border: none; background: none;
+  color: var(--mid-gray); cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px; transition: all 0.2s;
+}
+.session-tab:hover { color: var(--faded-black); }
+.session-tab.active {
+  color: var(--pine); border-bottom-color: var(--pine);
+}
+
+.session-flow { max-width: 780px; }
+.session-flow.hidden { display: none; }
+
+.flow-step {
+  display: flex; gap: 28px; padding: 28px 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+.flow-step:last-child { border-bottom: none; }
+.flow-num {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 32px; color: var(--pine); opacity: 0.25;
+  min-width: 50px; line-height: 1;
+  padding-top: 4px;
+}
+.flow-content h3 {
+  font-family: var(--font-display); font-size: 20px;
+  font-weight: 700; margin-bottom: 4px;
+}
+.flow-time {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--tobacco); font-weight: 600; margin-bottom: 10px;
+}
+.flow-content p {
+  font-size: 15px; color: var(--warm-gray); line-height: 1.7;
+}
+.flow-content em {
+  font-family: var(--font-accent); color: var(--faded-black);
+  font-style: italic;
+}
+
 /* ===== APPROACH ===== */
 .approach-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 24px; margin-bottom: 48px;
 }
 .approach-card {
-  border: 1px solid rgba(245, 240, 232, 0.1);
+  border: 1px solid var(--light-gray);
   border-radius: 8px; padding: 36px;
-  transition: border-color 0.2s;
+  background: var(--bone-light);
+  transition: border-color 0.2s, transform 0.2s;
 }
-.approach-card:hover { border-color: var(--tobacco-light); }
+.approach-card:hover { border-color: var(--pine); transform: translateY(-2px); }
 .approach-card h3 {
   font-family: var(--font-display); font-size: 22px;
   margin-bottom: 12px; font-weight: 700;
 }
-.approach-card p { font-size: 15px; color: var(--light-gray); line-height: 1.7; }
+.approach-card p { font-size: 15px; color: var(--warm-gray); line-height: 1.7; }
 
 .pull-quote {
   text-align: center; max-width: 640px; margin: 0 auto;
@@ -361,8 +417,22 @@ a { color: inherit; text-decoration: none; }
 .pull-quote p {
   font-family: var(--font-accent); font-style: italic;
   font-size: clamp(18px, 3vw, 24px);
-  color: var(--tobacco-light); line-height: 1.6;
+  color: var(--tobacco); line-height: 1.6;
 }
+
+/* Services on dark background */
+.section-dark .card {
+  background: rgba(245, 240, 232, 0.06); border-color: rgba(245, 240, 232, 0.12);
+  color: var(--bone);
+}
+.section-dark .card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.section-dark .card h3 { color: var(--bone); }
+.section-dark .card p { color: var(--light-gray); }
+.section-dark .card-icon { color: var(--tobacco-light); }
+.section-dark .card-featured { border-color: var(--tobacco-light); box-shadow: 0 0 0 1px var(--tobacco-light); }
+.section-dark .card-badge { background: var(--tobacco-light); color: var(--faded-black); }
+.section-dark .card-pricing { border-top-color: rgba(245, 240, 232, 0.12); }
+.section-dark .price-row span:last-child { color: var(--tobacco-light); }
 
 /* ===== BOOKING ===== */
 .booking-placeholder {
@@ -417,6 +487,9 @@ a { color: inherit; text-decoration: none; }
   .booking-contact { flex-direction: column; align-items: center; }
   .coaches-names { gap: 8px 24px; }
 
+  .session-tabs { overflow-x: auto; gap: 0; }
+  .session-tab { padding: 12px 16px; font-size: 13px; white-space: nowrap; }
+
   .hero-content { padding: 100px 20px 60px; }
 }
 
@@ -424,5 +497,7 @@ a { color: inherit; text-decoration: none; }
   .hero-title { font-size: 42px; }
   .timeline-item { flex-direction: column; gap: 8px; }
   .timeline-year { min-width: auto; }
+  .flow-step { flex-direction: column; gap: 8px; }
+  .flow-num { min-width: auto; font-size: 24px; }
   .footer-links { flex-direction: column; align-items: center; gap: 12px; }
 }
