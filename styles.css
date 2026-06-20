@@ -87,35 +87,15 @@ a { color: inherit; text-decoration: none; }
 .mobile-menu.open { display: flex; }
 
 /* ===== CREST ===== */
-.crest {
-  width: 44px; height: 44px;
-  border: 2px solid var(--bone);
-  border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
+.nav-logo-img {
+  height: 44px; width: auto;
 }
-.crest::before {
-  content: ''; position: absolute; inset: 3px;
-  border: 1px solid rgba(245, 240, 232, 0.3);
-  border-radius: 2px;
+.hero-logo-img {
+  height: 100px; width: auto;
 }
-.crest-text {
-  font-family: var(--font-display); font-weight: 900;
-  font-size: 18px; color: var(--bone); letter-spacing: 0.02em;
-  line-height: 1;
+.footer-logo-img {
+  height: 36px; width: auto;
 }
-.crest-lg {
-  width: 80px; height: 80px;
-  border-width: 3px;
-}
-.crest-lg::before { inset: 5px; }
-.crest-lg .crest-text { font-size: 32px; }
-.crest-sm {
-  width: 36px; height: 36px;
-  border-color: var(--mid-gray);
-}
-.crest-sm::before { border-color: rgba(107, 101, 96, 0.3); }
-.crest-sm .crest-text { font-size: 14px; color: var(--mid-gray); }
 
 /* ===== HERO ===== */
 .hero {
