@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>~*~CoAcH CK's BaSeBaLL AcAdEmY~*~ **GOING OLD SCHOOL**</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+  /* ===== THE STAR FIELD ===== */
+  body {
+    background-color: #000080;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, #fff 50%, transparent 50%),
+      radial-gradient(1px 1px at 30% 70%, #ffff00 50%, transparent 50%),
+      radial-gradient(2px 2px at 50% 10%, #fff 50%, transparent 50%),
+      radial-gradient(1px 1px at 70% 40%, #00ffff 50%, transparent 50%),
+      radial-gradient(1px 1px at 90% 80%, #fff 50%, transparent 50%),
+      radial-gradient(1px 1px at 15% 90%, #ffff00 50%, transparent 50%),
+      radial-gradient(2px 2px at 80% 15%, #fff 50%, transparent 50%),
+      radial-gradient(1px 1px at 45% 55%, #00ffff 50%, transparent 50%),
+      radial-gradient(1px 1px at 60% 95%, #fff 50%, transparent 50%),
+      radial-gradient(1px 1px at 5% 50%, #ffff00 50%, transparent 50%),
+      radial-gradient(1px 1px at 95% 60%, #fff 50%, transparent 50%),
+      radial-gradient(1px 1px at 25% 35%, #fff 50%, transparent 50%),
+      radial-gradient(2px 2px at 75% 85%, #00ffff 50%, transparent 50%),
+      radial-gradient(1px 1px at 35% 5%, #ffff00 50%, transparent 50%),
+      radial-gradient(1px 1px at 85% 45%, #fff 50%, transparent 50%);
+    color: #00ff00;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+    margin: 0;
+    padding: 0;
+    cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='28' font-size='28'>⚾</text></svg>") 16 16, auto;
+    overflow-x: hidden;
+  }
+
+  /* ===== MARQUEE BANNER ===== */
+  .marquee-top {
+    background: linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000);
+    background-size: 400% 100%;
+    animation: rainbowSlide 3s linear infinite;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 6px 0;
+    text-align: center;
+    text-shadow: 1px 1px 0 #000;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .marquee-top .scroll-text {
+    display: inline-block;
+    animation: marqueeScroll 15s linear infinite;
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+  @keyframes rainbowSlide {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+  }
+
+  /* ===== MAIN CONTAINER (table vibes) ===== */
+  .geocities-container {
+    max-width: 780px;
+    margin: 0 auto;
+    background-color: #000033;
+    border-left: 3px ridge #c0c0c0;
+    border-right: 3px ridge #c0c0c0;
+    padding: 0;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    text-align: center;
+    padding: 20px 15px 10px;
+    border-bottom: 4px double #ffff00;
+  }
+  .site-header h1 {
+    font-size: 42px;
+    color: #ff0000;
+    text-shadow: 3px 3px 0 #ffff00, -1px -1px 0 #00ffff;
+    margin: 0;
+    animation: headerPulse 1.5s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+  }
+  @keyframes headerPulse {
+    0% { transform: scale(1); text-shadow: 3px 3px 0 #ffff00, -1px -1px 0 #00ffff; }
+    100% { transform: scale(1.03); text-shadow: 4px 4px 0 #ff6600, -2px -2px 0 #ff00ff; }
+  }
+  .site-header .subtitle {
+    font-size: 16px;
+    color: #ffff00;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .tilde-line {
+    color: #ff00ff;
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+  .hit-counter-area {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #808080;
+  }
+  .hit-counter {
+    display: inline-block;
+    background: #000;
+    border: 2px inset #808080;
+    padding: 2px 8px;
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== NAV BAR ===== */
+  .nav-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px;
+    background: linear-gradient(to bottom, #808080, #404040);
+    border-top: 2px ridge #c0c0c0;
+    border-bottom: 2px ridge #c0c0c0;
+  }
+  .nav-bar a {
+    display: inline-block;
+    padding: 4px 12px;
+    background: linear-gradient(to bottom, #c0c0c0, #808080);
+    border: 2px outset #c0c0c0;
+    color: #000080;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Verdana', sans-serif;
+  }
+  .nav-bar a:hover {
+    border-style: inset;
+    background: linear-gradient(to bottom, #808080, #c0c0c0);
+  }
+  .nav-bar a:active {
+    border-style: inset;
+  }
+
+  /* ===== CONTENT AREA ===== */
+  .content {
+    padding: 15px 20px;
+  }
+
+  /* ===== SECTION DIVIDERS ===== */
+  .divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 12px;
+    color: #ff00ff;
+    letter-spacing: 3px;
+  }
+  .divider-line {
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ff0000, #ffff00, #00ff00, #0000ff, #ff00ff, transparent);
+    margin: 15px 0;
+    border: none;
+  }
+
+  /* ===== "GOING OLD SCHOOL" HERO ===== */
+  .old-school-hero {
+    text-align: center;
+    padding: 25px 15px;
+    background: repeating-linear-gradient(
+      45deg,
+      #000033,
+      #000033 10px,
+      #000044 10px,
+      #000044 20px
+    );
+    border: 3px double #ffff00;
+    margin: 15px 0;
+  }
+  .old-school-hero h2 {
+    font-size: 36px;
+    color: #00ffff;
+    text-shadow: 2px 2px 0 #ff0000;
+    margin: 0 0 10px;
+    animation: wobble 2s ease-in-out infinite;
+  }
+  @keyframes wobble {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+  .old-school-hero p {
+    color: #ffff00;
+    font-size: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .flame-text {
+    display: inline-block;
+    background: linear-gradient(to top, #ff0000, #ff6600, #ffff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    font-size: 18px;
+    animation: flameFlicker 0.3s ease-in-out infinite alternate;
+  }
+  @keyframes flameFlicker {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.3); }
+  }
+
+  /* ===== UNDER CONSTRUCTION ===== */
+  .under-construction {
+    text-align: center;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px dashed #ffff00;
+    background: #330000;
+  }
+  .under-construction .cone {
+    font-size: 32px;
+    display: inline-block;
+    animation: coneBounce 0.6s ease-in-out infinite alternate;
+  }
+  .under-construction .cone:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  @keyframes coneBounce {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-8px) rotate(10deg); }
+  }
+  .under-construction p {
+    color: #ff0000;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: blink 1s step-end infinite;
+  }
+
+  /* ===== INFO TABLE ===== */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 13px;
+  }
+  .info-table caption {
+    color: #00ffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    padding-bottom: 6px;
+    text-shadow: 1px 1px 0 #ff0000;
+  }
+  .info-table th {
+    background: linear-gradient(to bottom, #800000, #400000);
+    color: #ffff00;
+    padding: 6px 10px;
+    border: 2px ridge #808080;
+    text-align: left;
+    font-family: 'Verdana', sans-serif;
+    font-size: 12px;
+  }
+  .info-table td {
+    background: #000033;
+    color: #00ff00;
+    padding: 6px 10px;
+    border: 1px solid #404080;
+  }
+  .info-table tr:nth-child(even) td {
+    background: #000044;
+  }
+
+  /* ===== BROKEN IMAGE ===== */
+  .broken-img-container {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px dashed #808080;
+    background: #111;
+  }
+  .broken-img-container .caption {
+    color: #808080;
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  /* ===== BASEBALL ANIMATION ===== */
+  .baseball-float {
+    position: fixed;
+    font-size: 28px;
+    animation: floatAcross 8s linear infinite;
+    top: 30%;
+    z-index: 999;
+    pointer-events: none;
+  }
+  .baseball-float:nth-child(2) {
+    animation-duration: 12s;
+    animation-delay: 3s;
+    top: 60%;
+    font-size: 22px;
+  }
+  @keyframes floatAcross {
+    0% { left: -50px; transform: rotate(0deg); }
+    100% { left: calc(100vw + 50px); transform: rotate(720deg); }
+  }
+
+  /* ===== GUESTBOOK SECTION ===== */
+  .guestbook {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: #000044;
+    border: 3px groove #c0c0c0;
+  }
+  .guestbook h3 {
+    color: #ff00ff;
+    font-size: 22px;
+    margin: 0 0 8px;
+  }
+  .guestbook p {
+    color: #c0c0c0;
+    font-size: 13px;
+  }
+  .guestbook-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 20px;
+    background: linear-gradient(to bottom, #ffff00, #ff6600);
+    border: 3px outset #ffff00;
+    color: #000;
+    font-weight: bold;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    animation: guestbookPulse 2s ease-in-out infinite;
+  }
+  @keyframes guestbookPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonial {
+    margin: 12px 0;
+    padding: 10px 15px;
+    border-left: 4px solid #ff00ff;
+    background: rgba(255, 0, 255, 0.05);
+    font-style: italic;
+    color: #c0c0c0;
+    font-size: 13px;
+  }
+  .testimonial .author {
+    color: #ffff00;
+    font-style: normal;
+    font-weight: bold;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ===== SPINNING BASEBALL ===== */
+  .spin-ball {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    font-size: 24px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* ===== BOUNCE ===== */
+  .bounce {
+    display: inline-block;
+    animation: bounce 0.5s ease-in-out infinite alternate;
+  }
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+  }
+  .bounce:nth-child(2) { animation-delay: 0.1s; }
+  .bounce:nth-child(3) { animation-delay: 0.2s; }
+  .bounce:nth-child(4) { animation-delay: 0.3s; }
+  .bounce:nth-child(5) { animation-delay: 0.4s; }
+
+  /* ===== WEBRING ===== */
+  .webring {
+    text-align: center;
+    margin: 20px 0 10px;
+    padding: 12px;
+    border: 2px double #808080;
+    background: #111;
+    font-size: 12px;
+    color: #808080;
+  }
+  .webring a {
+    color: #00ffff;
+    text-decoration: underline;
+  }
+  .webring .ring-name {
+    color: #ff6600;
+    font-weight: bold;
+  }
+
+  /* ===== FOOTER ===== */
+  .geo-footer {
+    text-align: center;
+    padding: 15px;
+    border-top: 4px double #ffff00;
+    font-size: 11px;
+    color: #808080;
+    background: #000022;
+  }
+  .geo-footer a {
+    color: #00ffff;
+  }
+  .netscape-badge {
+    display: inline-block;
+    border: 2px outset #c0c0c0;
+    padding: 3px 8px;
+    background: #c0c0c0;
+    color: #000080;
+    font-weight: bold;
+    font-size: 10px;
+    font-family: 'Verdana', sans-serif;
+    margin-top: 8px;
+  }
+
+  /* ===== SPARKLE CURSOR TRAIL ===== */
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 16px;
+    animation: sparkleFade 0.8s forwards;
+    z-index: 10000;
+  }
+  @keyframes sparkleFade {
+    0% { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 0; transform: scale(0.3) translateY(-30px); }
+  }
+
+  /* ===== COACH PHOTO ===== */
+  .coach-photo-section {
+    text-align: center;
+    margin: 15px 0;
+  }
+  .coach-photo-section img {
+    border: 4px ridge #c0c0c0;
+    max-width: 280px;
+    filter: saturate(1.4) contrast(1.1);
+    image-rendering: pixelated;
+    animation: photoGlow 3s ease-in-out infinite alternate;
+  }
+  @keyframes photoGlow {
+    0% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff; }
+    100% { box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff; }
+  }
+  .coach-photo-section .photo-caption {
+    color: #ffff00;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  /* ===== PRICING ===== */
+  .pricing-section {
+    margin: 15px 0;
+    padding: 15px;
+    background: #110022;
+    border: 2px ridge #ff00ff;
+  }
+  .pricing-section h3 {
+    color: #00ffff;
+    text-align: center;
+    font-size: 22px;
+    margin: 0 0 10px;
+    text-shadow: 2px 2px 0 #ff0000;
+  }
+  .price-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px dotted #404080;
+    color: #00ff00;
+    font-size: 14px;
+  }
+  .price-item .cost {
+    color: #ffff00;
+    font-weight: bold;
+  }
+  .price-new {
+    color: #ff0000;
+    font-size: 11px;
+    animation: blink 1s step-end infinite;
+    font-weight: bold;
+  }
+
+  /* ===== MIDI PLAYER (fake) ===== */
+  .midi-player {
+    text-align: center;
+    margin: 10px 0;
+    padding: 6px;
+    background: #c0c0c0;
+    border: 2px inset #808080;
+    display: inline-block;
+    font-family: 'Verdana', sans-serif;
+    font-size: 10px;
+    color: #000;
+  }
+  .midi-player .controls {
+    display: inline-flex;
+    gap: 2px;
+    margin-left: 6px;
+  }
+  .midi-player .ctrl-btn {
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    background: #c0c0c0;
+    border: 2px outset #c0c0c0;
+    text-align: center;
+    line-height: 14px;
+    font-size: 8px;
+    cursor: pointer;
+  }
+  .midi-player .ctrl-btn:active {
+    border-style: inset;
+  }
+
+  /* ===== DANCING LETTERS ===== */
+  .dance-letter {
+    display: inline-block;
+    animation: danceLetter 0.6s ease-in-out infinite alternate;
+  }
+  .dance-letter:nth-child(1) { animation-delay: 0s; color: #ff0000; }
+  .dance-letter:nth-child(2) { animation-delay: 0.05s; color: #ff6600; }
+  .dance-letter:nth-child(3) { animation-delay: 0.1s; color: #ffff00; }
+  .dance-letter:nth-child(4) { animation-delay: 0.15s; color: #00ff00; }
+  .dance-letter:nth-child(5) { animation-delay: 0.2s; color: #00ffff; }
+  .dance-letter:nth-child(6) { animation-delay: 0.25s; color: #0000ff; }
+  .dance-letter:nth-child(7) { animation-delay: 0.3s; color: #8b00ff; }
+  .dance-letter:nth-child(8) { animation-delay: 0.35s; color: #ff00ff; }
+  .dance-letter:nth-child(9) { animation-delay: 0.4s; color: #ff0000; }
+  .dance-letter:nth-child(10) { animation-delay: 0.45s; color: #ff6600; }
+  .dance-letter:nth-child(11) { animation-delay: 0.5s; color: #ffff00; }
+  .dance-letter:nth-child(12) { animation-delay: 0.55s; color: #00ff00; }
+  @keyframes danceLetter {
+    0% { transform: translateY(0) rotate(-5deg); }
+    100% { transform: translateY(-8px) rotate(5deg); }
+  }
+
+  /* ===== AWARDS SECTION ===== */
+  .awards {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #404080;
+  }
+  .awards h4 {
+    color: #c0c0c0;
+    font-size: 13px;
+    margin: 0 0 8px;
+    font-family: 'Verdana', sans-serif;
+  }
+  .award-badge {
+    display: inline-block;
+    margin: 4px 8px;
+    padding: 6px 12px;
+    border: 2px outset #c0c0c0;
+    background: linear-gradient(to bottom, #404040, #202020);
+    color: #ffff00;
+    font-size: 10px;
+    font-family: 'Verdana', sans-serif;
+    font-weight: bold;
+  }
+
+  /* ===== EMAIL LINK ===== */
+  .email-section {
+    text-align: center;
+    margin: 15px 0;
+  }
+  .email-link {
+    color: #00ffff;
+    text-decoration: underline;
+    font-size: 14px;
+  }
+  .mailbox-icon {
+    display: inline-block;
+    font-size: 28px;
+    animation: mailboxWave 1s ease-in-out infinite;
+    vertical-align: middle;
+  }
+  @keyframes mailboxWave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+  }
+
+  /* ===== SCROLLING SIDEBAR-STYLE TICKER ===== */
+  .news-ticker {
+    background: #000;
+    border: 2px inset #808080;
+    padding: 6px 10px;
+    margin: 15px 0;
+    overflow: hidden;
+    height: 22px;
+    position: relative;
+  }
+  .news-ticker .ticker-content {
+    position: absolute;
+    white-space: nowrap;
+    animation: tickerScroll 20s linear infinite;
+    color: #ffff00;
+    font-size: 13px;
+    font-family: 'Verdana', sans-serif;
+  }
+  @keyframes tickerScroll {
+    0% { left: 100%; }
+    100% { left: -200%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating baseballs -->
+<div class="baseball-float">⚾</div>
+<div class="baseball-float">⚾</div>
+
+<!-- Rainbow marquee -->
+<div class="marquee-top">
+  <span class="scroll-text">
+    *** WELCOME TO COACH CK'S BASEBALL ACADEMY *** HOUSTON'S #1 PRIVATE LESSONS (self-proclaimed lol) *** GOING OLD SCHOOL SUMMER 2026 *** NOW ACCEPTING NEW PLAYERS *** TELL YOUR FRIENDS ***
+  </span>
+</div>
+
+<div class="geocities-container">
+
+  <!-- HEADER -->
+  <div class="site-header">
+    <div class="tilde-line">~*~*~*~*~*~*~*~*~*~*~</div>
+    <h1>CoAcH CK</h1>
+    <div class="subtitle">** PRIVATE BASEBALL LESSONS **</div>
+    <div style="color: #ff00ff; font-size: 13px; margin-top: 4px;">Houston, Texas | Since Right Now</div>
+    <div class="tilde-line">~*~*~*~*~*~*~*~*~*~*~</div>
+    <div style="text-align: center; margin-top: 8px;">
+      <div class="midi-player">
+        <span>&#9834;</span> take_me_out_to_the_ballgame.mid
+        <span class="controls">
+          <span class="ctrl-btn">&#9654;</span>
+          <span class="ctrl-btn">&#9632;</span>
+          <span class="ctrl-btn">&#9646;&#9646;</span>
+        </span>
+      </div>
+    </div>
+    <div class="hit-counter-area">
+      You are visitor #<span class="hit-counter">004,827</span> since June 2026
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-bar">
+    <a href="#about">About CK</a>
+    <a href="#lessons">Lessons</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#guestbook">Guestbook</a>
+    <a href="index.html">Real Site</a>
+  </div>
+
+  <!-- NEWS TICKER -->
+  <div class="news-ticker">
+    <div class="ticker-content">
+      BREAKING: Owen Ramirez clocks 46 mph in pitching debut... Oliver Pfeil putting in WORK on his summer throwing program... Jesse Gibbon's 4-seam grip looking nasty... Summer spots filling up FAST... Wyatt Asmussen lower-half tempo getting dialed in...
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- GOING OLD SCHOOL HERO -->
+    <div class="old-school-hero">
+      <h2>
+        <span class="dance-letter">G</span><span class="dance-letter">O</span><span class="dance-letter">I</span><span class="dance-letter">N</span><span class="dance-letter">G</span><span class="dance-letter"> </span><span class="dance-letter">O</span><span class="dance-letter">L</span><span class="dance-letter">D</span><span class="dance-letter"> </span><span class="dance-letter">S</span><span class="dance-letter">C</span><span class="dance-letter">H</span><span class="dance-letter">O</span><span class="dance-letter">O</span><span class="dance-letter">L</span>
+      </h2>
+      <p>No gimmicks. No travel ball politics. Just a guy who played at <span class="flame-text">Rice University</span> and threw professionally for the <span class="flame-text">Washington Nationals</span> who wants to help your kid get better at baseball.</p>
+      <br>
+      <p style="color: #00ff00; font-size: 12px;">The internet used to look like this.<br>Baseball coaching used to be this simple too.</p>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- ABOUT -->
+    <div id="about">
+      <div style="text-align: center; font-size: 20px; color: #00ffff; margin-bottom: 10px;">
+        <span class="spin-ball">⚾</span>
+        <b> WHO IS COACH CK? </b>
+        <span class="spin-ball">⚾</span>
+      </div>
+
+      <div class="coach-photo-section">
+        <img src="about-ck.jpg" alt="Coach Chris Kelley pitching for Rice University" />
+        <div class="photo-caption">^ that's me throwing GAS at Rice (ok fine it was like 87 but still) ^</div>
+      </div>
+
+      <p style="color: #c0c0c0; font-size: 14px; line-height: 1.7;">
+        <span style="color: #ffff00; font-weight: bold;">Chris Kelley</span> played baseball at
+        <span style="color: #00ffff;">Rice University</span> under Wayne Graham, got drafted by the
+        <span style="color: #ff6600;">Arizona Diamondbacks</span>, and pitched professionally for the
+        <span style="color: #ff0000;">Washington Nationals</span> organization (GCL Nationals + Hagerstown Suns, East Division Champions baby).
+      </p>
+      <p style="color: #c0c0c0; font-size: 14px; line-height: 1.7;">
+        Now he teaches kids in Houston how to hit, field, and pitch. No shortcuts. Just real development.
+        One player at a time. The way it used to be done.
+        <span style="color: #00ff00;"> <-- old school.</span>
+      </p>
+    </div>
+
+    <div class="divider">&#9733; &#9733; &#9733; &#9733; &#9733; &#9733; &#9733;</div>
+
+    <!-- THE BROKEN IMAGE -->
+    <div class="broken-img-container">
+      <img src="coach_ck_epic_strikeout_compilation_FINAL_v3_USE_THIS_ONE.gif" alt="[IMAGE] Coach CK's Epic Strikeout Compilation - 2.4 MB - please wait..." width="400" height="200" style="border: 1px solid #808080;">
+      <div class="caption">^ coach ck's strikeout reel (sorry this gif is taking forever to load... try refreshing?) ^</div>
+      <div style="color: #ff0000; font-size: 10px; margin-top: 4px;">Last modified: 06/23/2026 02:47 AM</div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- LESSONS -->
+    <div id="lessons">
+      <div style="text-align: center; font-size: 20px; color: #00ffff; margin-bottom: 10px;">
+        <span class="bounce">&#127942;</span>
+        <b> WHAT WE WORK ON </b>
+        <span class="bounce">&#127942;</span>
+      </div>
+
+      <table class="info-table">
+        <tr>
+          <th>Skill</th>
+          <th>What You Get</th>
+          <th>Vibe</th>
+        </tr>
+        <tr>
+          <td><span style="color: #ffff00;">&#9733;</span> Hitting</td>
+          <td>Tee progressions, front toss, live BP, mechanic cues</td>
+          <td>Swing hard, don't aim</td>
+        </tr>
+        <tr>
+          <td><span style="color: #ffff00;">&#9733;</span> Pitching</td>
+          <td>Windup/stretch mechanics, bullpen work, command drills</td>
+          <td>Where the glove goes, arm follows</td>
+        </tr>
+        <tr>
+          <td><span style="color: #ffff00;">&#9733;</span> Fielding</td>
+          <td>Glove work, footwork, throw accuracy, game situations</td>
+          <td>Smooth is fast</td>
+        </tr>
+        <tr>
+          <td><span style="color: #ffff00;">&#9733;</span> Throwing Program</td>
+          <td>Custom long toss routine, arm strength, velocity building</td>
+          <td>Every throw has a purpose</td>
+        </tr>
+        <tr>
+          <td><span style="color: #ff0000;">NEW!</span> Full Evaluation</td>
+          <td>Baseline testing, custom report, personalized drill menus</td>
+          <td>Know where you stand</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- PRICING -->
+    <div id="pricing">
+      <div class="pricing-section">
+        <h3>
+          <span class="bounce">&#128176;</span> LESSON PRICING <span class="bounce">&#128176;</span>
+        </h3>
+        <div class="price-item">
+          <span>30 Minutes</span>
+          <span class="cost">$45</span>
+        </div>
+        <div class="price-item">
+          <span>45 Minutes</span>
+          <span class="cost">$55</span>
+        </div>
+        <div class="price-item">
+          <span>60 Minutes <span style="color: #00ff00;">(most popular)</span></span>
+          <span class="cost">$60</span>
+        </div>
+        <div class="price-item">
+          <span>90 Minutes <span class="price-new">NEW!</span></span>
+          <span class="cost">$80</span>
+        </div>
+        <div style="text-align: center; margin-top: 12px; color: #c0c0c0; font-size: 12px;">
+          Westbury area, Houston TX &bull; Weekday evenings &bull; Text to book
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">&#9733; &#9733; &#9733; &#9733; &#9733; &#9733; &#9733;</div>
+
+    <!-- TESTIMONIALS -->
+    <div id="testimonials">
+      <div style="text-align: center; font-size: 20px; color: #00ffff; margin-bottom: 10px;">
+        <b>WHAT PARENTS ARE SAYING</b>
+      </div>
+
+      <div class="testimonial">
+        "Owen picked up every ball without being asked. You can tell he loves a good challenge."
+        <span class="author">- Coach CK's Session Notes (we don't have real testimonials yet, this is from my own notes lol)</span>
+      </div>
+      <div class="testimonial">
+        "My kid asked to go BACK to baseball practice. That's never happened before."
+        <span class="author">- Actual Parent (probably) (ok fine I made this up but it WILL happen)</span>
+      </div>
+      <div class="testimonial">
+        "3-2 record, 3.32 ERA with the GCL Nationals. East Division Champions."
+        <span class="author">- Not a testimonial, just flexing. Sorry not sorry.</span>
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- UNDER CONSTRUCTION -->
+    <div class="under-construction">
+      <span class="cone">&#128679;</span>
+      <span class="cone">&#128679;</span>
+      <p>THIS SECTION UNDER CONSTRUCTION</p>
+      <span style="color: #808080; font-size: 11px; animation: none; display: block;">
+        (online booking coming soon... for now just text me)
+      </span>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="email-section">
+      <span class="mailbox-icon">&#128235;</span>
+      <a href="mailto:chriskelley85@gmail.com" class="email-link">EMAIL COACH CK</a>
+      <span class="mailbox-icon">&#128235;</span>
+      <br>
+      <span style="color: #c0c0c0; font-size: 13px;">or text: <span style="color: #00ff00;">832-807-3093</span></span>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- GUESTBOOK -->
+    <div id="guestbook" class="guestbook">
+      <h3>&#128221; SIGN MY GUESTBOOK &#128221;</h3>
+      <p>Let me know you stopped by! Leave a message below.</p>
+      <a href="#" class="guestbook-btn" onclick="alert('Just kidding, this is a fake guestbook. Text me instead: 832-807-3093'); return false;">
+        SIGN THE GUESTBOOK
+      </a>
+      <br><br>
+      <span style="color: #808080; font-size: 10px;">(jk there's no guestbook. this is 2026. just text me.)</span>
+    </div>
+
+    <!-- AWARDS -->
+    <div class="awards">
+      <h4>AWARDS & RECOGNITION</h4>
+      <span class="award-badge">&#127942; GCL EAST DIVISION CHAMPS</span>
+      <span class="award-badge">&#9733; RICE UNIVERSITY LETTERMAN</span>
+      <span class="award-badge">&#127944; MLB DRAFT PICK (x2)</span>
+      <span class="award-badge">&#128293; THIS WEBSITE AWARD</span>
+    </div>
+
+    <!-- WEBRING -->
+    <div class="webring">
+      <span class="ring-name">&#9670; Houston Baseball Coaches WebRing &#9670;</span><br>
+      <a href="#">&laquo; Prev</a> |
+      <a href="#">Random</a> |
+      <a href="#">Next &raquo;</a> |
+      <a href="#">List All Sites</a>
+      <br>
+      <span style="font-size: 10px; color: #606060;">This site is proudly part of the Houston Baseball Coaches WebRing. Est. 2026.</span>
+    </div>
+
+  </div><!-- end content -->
+
+  <!-- FOOTER -->
+  <div class="geo-footer">
+    <p>&copy; 2026 Coach CK's Baseball Academy. All rights reserved. None of this is real legal stuff.</p>
+    <p>Made with &#128153; and way too much time in Houston, TX</p>
+    <p style="margin-top: 6px;">
+      <a href="index.html">Visit the REAL Coach CK site</a> &bull;
+      <a href="mailto:chriskelley85@gmail.com">Email</a> &bull;
+      832-807-3093
+    </p>
+    <div class="netscape-badge">&#127760; Best Viewed in Netscape Navigator 4.0 at 800x600</div>
+    <p style="margin-top: 10px; font-size: 10px; color: #606060;">
+      Hosted on GeoCities/SunsetStrip/Dugout/4827<br>
+      Last updated: June 23, 2026 at 3:47 AM (couldn't sleep, was building this page)
+    </p>
+  </div>
+
+</div><!-- end container -->
+
+<!-- Sparkle cursor trail -->
+<script>
+  document.addEventListener('mousemove', function(e) {
+    if (Math.random() > 0.85) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.textContent = ['✨', '⭐', '💫', '✦'][Math.floor(Math.random() * 4)];
+      sparkle.style.left = e.pageX + 'px';
+      sparkle.style.top = e.pageY + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 800);
+    }
+  });
+
+  // Fake hit counter increment
+  const counter = document.querySelector('.hit-counter');
+  let count = 4827;
+  setInterval(() => {
+    count += Math.floor(Math.random() * 3);
+    counter.textContent = count.toString().padStart(7, '0').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+  }, 8000);
+</script>
+
+</body>
+</html>
