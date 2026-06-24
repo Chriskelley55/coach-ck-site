@@ -654,9 +654,9 @@
       <div class="midi-player">
         <span>&#9834;</span> take_me_out_to_the_ballgame.mid
         <span class="controls">
-          <span class="ctrl-btn">&#9654;</span>
-          <span class="ctrl-btn">&#9632;</span>
-          <span class="ctrl-btn">&#9646;&#9646;</span>
+          <span class="ctrl-btn" id="midi-play" onclick="midiPlay()">&#9654;</span>
+          <span class="ctrl-btn" id="midi-stop" onclick="midiStop()">&#9632;</span>
+          <span class="ctrl-btn" id="midi-pause" onclick="midiPause()">&#9646;&#9646;</span>
         </span>
       </div>
     </div>
@@ -914,6 +914,74 @@
       setTimeout(() => sparkle.remove(), 800);
     }
   });
+
+  // MIDI synth - Take Me Out to the Ball Game
+  let midiCtx = null, midiTimeouts = [], midiPaused = false, midiNoteIndex = 0;
+  const melody = [
+    // [note, duration] - note as MIDI number, duration in beats
+    // "Take me out to the ball game"
+    [72,2],[76,1],[79,2],[79,1],[76,2],[72,1],[76,1.5],[72,0.5],[76,2],
+    // "Take me out with the crowd"
+    [72,2],[76,1],[79,2],[79,1],[76,3],[0,1],
+    // "Buy me some peanuts and Cracker Jack"
+    [79,2],[80,1],[81,1.5],[79,0.5],[76,1],[74,2],[72,1],[74,1.5],[76,0.5],[74,2],
+    // "I don't care if I never get back"
+    [72,2],[69,1],[67,2],[69,1],[72,1.5],[74,0.5],[76,2],[0,1],
+    // "Let me root root root for the home team"
+    [72,2],[76,1],[79,2],[79,1],[76,2],[72,1],[76,1.5],[72,0.5],[76,2],
+    // "If they don't win it's a shame"
+    [72,2],[76,1],[79,2],[79,1],[76,3],[0,1],
+    // "For it's one, two, three strikes you're out"
+    [79,2],[80,1],[81,2],[79,1],[76,2],[72,1],[74,2],[76,1],
+    // "At the old ball game!"
+    [79,2],[76,1],[72,3],[0,2]
+  ];
+  function midiNoteToFreq(n) { return 440 * Math.pow(2, (n - 69) / 12); }
+  function playFrom(startIndex) {
+    if (!midiCtx) midiCtx = new (window.AudioContext || window.webkitAudioContext)();
+    midiTimeouts.forEach(clearTimeout);
+    midiTimeouts = [];
+    let time = 0;
+    const tempo = 220;
+    for (let i = startIndex; i < melody.length; i++) {
+      const [note, dur] = melody[i];
+      const ms = dur * tempo;
+      ((idx, n, d, t) => {
+        const tid = setTimeout(() => {
+          midiNoteIndex = idx + 1;
+          if (n === 0) return;
+          const osc = midiCtx.createOscillator();
+          const gain = midiCtx.createGain();
+          osc.type = 'square';
+          osc.frequency.value = midiNoteToFreq(n);
+          gain.gain.setValueAtTime(0.12, midiCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, midiCtx.currentTime + d * tempo / 1000 * 0.9);
+          osc.connect(gain);
+          gain.connect(midiCtx.destination);
+          osc.start();
+          osc.stop(midiCtx.currentTime + d * tempo / 1000);
+        }, t);
+        midiTimeouts.push(tid);
+      })(i, note, dur, time);
+      time += ms;
+    }
+    midiTimeouts.push(setTimeout(() => { midiNoteIndex = 0; }, time));
+  }
+  function midiPlay() {
+    midiPaused = false;
+    playFrom(midiNoteIndex);
+  }
+  function midiStop() {
+    midiTimeouts.forEach(clearTimeout);
+    midiTimeouts = [];
+    midiNoteIndex = 0;
+    midiPaused = false;
+  }
+  function midiPause() {
+    midiTimeouts.forEach(clearTimeout);
+    midiTimeouts = [];
+    midiPaused = true;
+  }
 
   // Fake hit counter increment
   const counter = document.querySelector('.hit-counter');
